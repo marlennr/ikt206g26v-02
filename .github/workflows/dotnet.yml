@@ -1,4 +1,4 @@
-name: .NET build and test
+name: .NET Build and Test
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup .NET
@@ -20,10 +20,10 @@ jobs:
           dotnet-version: "10.0.x"
 
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore ikt206g26v-02.slnx
 
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build ikt206g26v-02.slnx --no-restore --configuration Release
 
       - name: Test
-        run: dotnet test --no-build
+        run: dotnet test ikt206g26v-02.slnx --no-build --configuration Release
